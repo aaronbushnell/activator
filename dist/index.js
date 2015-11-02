@@ -4,42 +4,35 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 var $ = require('jquery');
 var EventEmitter = require('events');
 
-var Activator = (function (_EventEmitter) {
-  _inherits(Activator, _EventEmitter);
-
+var Activator = (function () {
   function Activator(el) {
     _classCallCheck(this, Activator);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Activator).call(this, el));
+    this.active = false;
+    this.el = el;
+    this.$el = $(el);
 
-    _this.active = false;
-    _this.el = el;
-    _this.$el = $(el);
-    return _this;
+    this.events = new EventEmitter();
   }
 
   _createClass(Activator, [{
     key: 'setActive',
     value: function setActive() {
       this.active = true;
-      this.emit('active');
+      this.events.emit('active');
     }
   }, {
     key: 'setInactive',
     value: function setInactive() {
       this.active = false;
-      this.emit('inactive');
+      this.events.emit('inactive');
     }
   }]);
 
   return Activator;
-})(EventEmitter);
+})();
 
 module.exports = Activator;

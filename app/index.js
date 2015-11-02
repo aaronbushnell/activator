@@ -1,24 +1,24 @@
-let $ = require('jquery');
-let EventEmitter = require('events');
+const $ = require('jquery');
+const EventEmitter = require('events');
 
-class Activator extends EventEmitter {
+class Activator {
 
   constructor (el) {
-    super(el);
-
     this.active = false;
     this.el = el;
     this.$el = $(el);
+
+    this.events = new EventEmitter();
   }
 
   setActive () {
     this.active = true;
-    this.emit('active');
+    this.events.emit('active');
   }
 
   setInactive () {
     this.active = false;
-    this.emit('inactive');
+    this.events.emit('inactive');
   }
 
 }
