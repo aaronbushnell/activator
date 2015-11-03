@@ -8,17 +8,17 @@ class Activator {
     this.el = el;
     this.$el = $(el);
 
-    this.events = new EventEmitter();
+    this.EventEmitter = new EventEmitter();
   }
 
   setActive () {
     this.active = true;
-    this.events.emit('active');
+    this.EventEmitter.emit('active');
   }
 
   setInactive () {
     this.active = false;
-    this.events.emit('inactive');
+    this.EventEmitter.emit('inactive');
   }
 
 }

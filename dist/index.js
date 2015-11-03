@@ -15,20 +15,20 @@ var Activator = (function () {
     this.el = el;
     this.$el = $(el);
 
-    this.events = new EventEmitter();
+    this.EventEmitter = new EventEmitter();
   }
 
   _createClass(Activator, [{
     key: 'setActive',
     value: function setActive() {
       this.active = true;
-      this.events.emit('active');
+      this.EventEmitter.emit('active');
     }
   }, {
     key: 'setInactive',
     value: function setInactive() {
       this.active = false;
-      this.events.emit('inactive');
+      this.EventEmitter.emit('inactive');
     }
   }]);
 
